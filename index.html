@@ -4,213 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deaa Mahmood | Portfolio</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --primary: #2563eb;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --comment: #6ee7b7;
-      --keyword: #60a5fa;
-      --string: #fbbf24;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.7;
-    }
-
-    header {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1e293b, #020617);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      font-size: clamp(3.2rem, 5vw, 4.5rem);
-      font-weight: 700;
-      opacity: 0;
-      transform: translateY(14px);
-      animation: heroIn 0.9s ease forwards;
-    }
-
-    header p {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      color: #cbd5f5;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 3px solid #cbd5f5;
-      width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
-    }
-
-    @keyframes typing { from { width: 0; } to { width: 100%; } }
-    @keyframes blink { 50% { border-color: transparent; } }
-    @keyframes heroIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 28px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
-      animation: btnFloat 2.8s ease-in-out infinite;
-    }
-
-    .btn:hover {
-      background: #1d4ed8;
-      transform: translateY(-3px);
-    }
-
-    @keyframes btnFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    section h2 {
-      font-size: 2.2rem;
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    section h2::after {
-      content: '';
-      width: 60px;
-      height: 4px;
-      background: var(--primary);
-      display: block;
-      margin: 10px auto 0;
-      border-radius: 10px;
-    }
-
-    .about p {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-      color: var(--gray);
-      font-size: 1.05rem;
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 50px;
-    }
-
-    .skill-card {
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .skill-card:hover { transform: translateY(-8px); }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 50px;
-    }
-
-    .project-card {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      transition: 0.3s ease;
-    }
-
-    .project-card:hover { transform: translateY(-10px); }
-
-    .project-card h3 { margin-bottom: 10px; }
-    .project-card p { color: var(--gray); font-size: 0.95rem; }
-
-    footer {
-      background: #020617;
-      color: #cbd5f5;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    footer a {
-      color: var(--primary);
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    .code-block {
-      margin: 35px auto 0;
-      max-width: 560px;
-      background: #020617;
-      border-radius: 14px;
-      padding: 20px 25px;
-      text-align: left;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      overflow: hidden;
-    }
-
-    .code-block pre {
-      margin: 0;
-      font-size: 0.9rem;
-      font-family: 'Courier New', monospace;
-    }
-
-    .comment { color: var(--comment); }
-    .keyword { color: var(--keyword); }
-    .string { color: var(--string); }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    :root{--primary:#2563eb;--dark:#0f172a;--light:#f8fafc;--gray:#64748b;--comment:#6ee7b7;}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:var(--light);color:var(--dark);line-height:1.7;}
+    header{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e293b,#020617);color:#fff;text-align:center;padding:40px 20px;}
+    header h1{font-size:clamp(3.2rem,5vw,4.5rem);font-weight:700;opacity:0;transform:translateY(14px);animation:heroIn .9s ease forwards;}
+    header p{margin-top:15px;font-size:1.2rem;color:#cbd5f5;overflow:hidden;white-space:nowrap;border-right:3px solid #cbd5f5;width:0;animation:typing 3s steps(30,end) forwards, blink .8s infinite;}
+    @keyframes typing{from{width:0}to{width:100%}} @keyframes blink{50%{border-color:transparent}} @keyframes heroIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .btn{display:inline-block;margin-top:30px;padding:12px 28px;background:var(--primary);color:#fff;border-radius:50px;text-decoration:none;font-weight:600;transition:transform .25s ease,background .25s ease,box-shadow .25s ease;box-shadow:0 10px 25px rgba(37,99,235,.25);animation:btnFloat 2.8s ease-in-out infinite;}
+    .btn:hover{background:#1d4ed8;transform:translateY(-3px)} @keyframes btnFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    section{padding:80px 20px;max-width:1100px;margin:auto;}
+    section h2{font-size:2.2rem;text-align:center;margin-bottom:40px;position:relative;}
+    section h2::after{content:'';width:60px;height:4px;background:var(--primary);display:block;margin:10px auto 0;border-radius:10px;}
+    .about p{max-width:900px;margin:auto;text-align:center;color:var(--gray);font-size:1.05rem;}
+    .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:50px;}
+    .skill-card{background:#fff;padding:25px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.06);text-align:center;transition:.3s;}
+    .skill-card:hover{transform:translateY(-8px)}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:50px;align-items:stretch;}
+    .project-card{background:#fff;padding:25px;border-radius:18px;box-shadow:0 15px 30px rgba(0,0,0,.08);transition:.3s ease;display:flex;flex-direction:column;gap:12px;min-height:220px;}
+    .project-card:hover{transform:translateY(-10px)}
+    .project-card h3{margin-bottom:0;line-height:1.25;}
+    .project-card p{color:var(--gray);font-size:.95rem;line-height:1.65;flex:1;}
+    footer{background:#020617;color:#cbd5f5;text-align:center;padding:40px 20px;}
+    footer a{color:var(--primary);margin:0 10px;text-decoration:none;}
+    .code-block{margin:35px auto 0;max-width:560px;background:#020617;border-radius:14px;padding:20px 25px;text-align:left;box-shadow:0 20px 40px rgba(0,0,0,.4);overflow:hidden;}
+    .code-block pre{margin:0;font-size:.9rem;font-family:'Courier New',monospace;color:var(--comment);}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
-
 <body>
-
   <header>
     <div>
       <h1>Deaa Mahmood</h1>
       <p>&gt; IT Support | Software Developer</p>
-
-      <div class="code-block">
-        <pre id="codeArea"></pre>
-      </div>
-
+      <div class="code-block"><pre id="codeArea"></pre></div>
       <a href="#projects" class="btn">View My Work</a>
     </div>
   </header>
@@ -227,65 +56,15 @@
   <section>
     <h2>Skills</h2>
     <div class="skills">
-      <div class="skill-card">Hardware & Software Troubleshooting</div>
+      <div class="skill-card">Hardware &amp; Software Troubleshooting</div>
       <div class="skill-card">Operating System Support (Windows)</div>
-      <div class="skill-card">User Support & Technical Assistance</div>
+      <div class="skill-card">User Support &amp; Technical Assistance</div>
       <div class="skill-card">Network Basics (TCP/IP, LAN, WAN)</div>
       <div class="skill-card">Problem Solving</div>
-      <div class="skill-card">Customer Service & Communication</div>
+      <div class="skill-card">Customer Service &amp; Communication</div>
       <div class="skill-card">Time Management</div>
-      <div class="skill-card">Teamwork & Collaboration</div>
-      <div class="skill-card">Adaptability & Continuous Learning</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Education & Experience</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>BSc — Computer Science</h3>
-        <p>
-          Dijlah University College<br>
-          Focused on modern technologies, problem-solving, and practical software projects.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>GDSC Mentor — Dijlah University (2023–2024)</h3>
-        <p>
-          • Provided guidance to student developers.<br>
-          • Supported event planning and technical training.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>GDSC Lead (2022–2023)</h3>
-        <p>
-          • Organized 20+ workshops and events.<br>
-          • Managed a student community of 300+ members.<br>
-          • Led the club to rank among top Iraqi universities.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Certifications</h2>
-    <div class="projects">
-      <div class="project-card"><h3>IT Technical Support</h3><p>Google</p></div>
-      <div class="project-card"><h3>GDSC Lead Certificate</h3><p>Google Developers</p></div>
-      <div class="project-card"><h3>Digital Marketing</h3><p>Google</p></div>
-      <div class="project-card"><h3>CCNA v1.0</h3><p>Cisco Academy in DUC</p></div>
-      <div class="project-card"><h3>1 Million Prompters</h3><p>Dubai Centre for Artificial Intelligence</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Courses</h2>
-    <div class="projects">
-      <div class="project-card"><h3>IT Technical Support</h3><p>Google</p></div>
-      <div class="project-card"><h3>Google Workspace</h3><p>GDG MENA</p></div>
-      <div class="project-card"><h3>Machine Learning</h3><p>Google Developers in MENA</p></div>
+      <div class="skill-card">Teamwork &amp; Collaboration</div>
+      <div class="skill-card">Adaptability &amp; Continuous Learning</div>
     </div>
   </section>
 
@@ -297,21 +76,26 @@
         <p>
           Speaker Gender Recognition is an AI-based system that analyzes voice signals to determine the speaker’s gender,
           enhancing human–computer interaction in applications such as voice assistants and customer service systems.
-          The project utilizes artificial intelligence and deep learning techniques using Python and TensorFlow.
-          Key challenges addressed include accent variation, background noise, and recording quality, highlighting the
-          need for robust algorithms and larger datasets to improve accuracy.
+          The project utilizes deep learning techniques using Python and TensorFlow, and addresses challenges such as accents,
+          background noise, and recording quality.
         </p>
       </div>
 
       <div class="project-card">
-        <h3>Enjaz – Electronic Archiving & Administrative Correspondence System</h3>
+        <h3>Enjaz – Electronic Archiving &amp; Administrative Correspondence System</h3>
         <p>
-          Enjaz is a comprehensive electronic archiving and administrative correspondence management system
-          developed using modern web technologies (React.js and Node.js). The system was successfully implemented
-          for a governmental service institution to organize incoming and outgoing correspondence workflows,
-          manage committees and institutions, and streamline administrative processes.
-          It provides analytical dashboards and detailed reports to support informed decision-making,
-          features full Arabic language support, and includes a responsive design suitable for different devices.
+          A comprehensive electronic archiving and administrative correspondence management system built using React.js &amp; Node.js,
+          successfully implemented for a governmental service institution. It organizes correspondence workflows, manages committees,
+          and provides dashboards and reports with full Arabic support and a responsive UI.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Sumer – Business Management System</h3>
+        <p>
+          An advanced open-source business management system developed with Python and Django, tailored for supermarkets, retail stores,
+          pharmacies, and restaurants. It automates daily operations from inventory management to sales processing to improve accuracy,
+          efficiency, and reduce human error.
         </p>
       </div>
     </div>
@@ -339,23 +123,19 @@
     let roleIndex = 0;
     const codeArea = document.getElementById('codeArea');
 
-    function renderRole() {
+    function renderRole(){
       codeArea.innerHTML = '';
-      roles[roleIndex].forEach((line, i) => {
-        const span = document.createElement('span');
-        span.className = 'comment';
-        span.style.display = 'block';
-        span.style.opacity = 0;
-        span.style.animation = `fadeIn 0.6s forwards ${i * 0.4}s`;
-        span.textContent = line;
-        codeArea.appendChild(span);
+      roles[roleIndex].forEach((line,i)=>{
+        const div = document.createElement('div');
+        div.style.opacity = 0;
+        div.style.animation = `fadeIn 0.6s forwards ${i*0.35}s`;
+        div.textContent = line;
+        codeArea.appendChild(div);
       });
-      roleIndex = (roleIndex + 1) % roles.length;
+      roleIndex = (roleIndex+1)%roles.length;
     }
-
-    setInterval(renderRole, 5000);
+    setInterval(renderRole,5000);
     renderRole();
   </script>
-
 </body>
 </html>
