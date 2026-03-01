@@ -2,6 +2,7 @@
  * Portfolio Website JavaScript
  * Author: Deaa Mahmood
  * Features: Smooth scrolling, animations, mobile menu, form handling
+ * Security: XSS protection, secure DOM manipulation
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -144,10 +145,20 @@ function initSkillBars() {
 }
 
 /**
- * Contact Form Handling
+ * Contact Form Handling with EmailJS
  */
 function initContactForm() {
     const form = document.querySelector('.contact-form');
+    
+    // EmailJS configuration
+    const EMAILJS_PUBLIC_KEY = 'Umww6GTpiFG-J8jMb';
+    const EMAILJS_SERVICE_ID = 'service_krpp13u';
+    const EMAILJS_TEMPLATE_ID = 'template_s8dkkib';
+    
+    // Initialize EmailJS
+    if (window.emailjs) {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
     
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -170,15 +181,30 @@ function initContactForm() {
                 return;
             }
             
-            // Simulate form submission
+            // Sanitize input to prevent XSS
+            const sanitizedData = {
+                name: sanitizeInput(data.name),
+                email: sanitizeInput(data.email),
+                subject: sanitizeInput(data.subject),
+                message: sanitizeInput(data.message)
+            };
+            
+            // Send email using EmailJS
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call
-            setTimeout(() => {
+            // Send email via EmailJS
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                from_name: sanitizedData.name,
+                from_email: sanitizedData.email,
+                subject: sanitizedData.subject,
+                message: sanitizedData.message,
+                to_email: 'deaasesco@gmail.com'
+            })
+            .then(function(response) {
                 // Show success message
                 showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                 
@@ -188,13 +214,32 @@ function initContactForm() {
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            })
+            .catch(function(error) {
+                // Show error message
+                showNotification('Failed to send message. Please try again or email me directly.', 'error');
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                console.error('EmailJS Error:', error);
+            });
         });
     }
 }
 
 /**
- * Show Notification
+ * Sanitize Input - Prevent XSS attacks
+ */
+function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+/**
+ * Show Notification - Secure version (prevents XSS)
  */
 function showNotification(message, type) {
     // Remove existing notifications
@@ -203,15 +248,24 @@ function showNotification(message, type) {
         existingNotification.remove();
     }
     
-    // Create notification element
+    // Create notification element using safe DOM methods
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            <span>${message}</span>
-        </div>
-    `;
+    
+    // Create inner structure safely
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'notification-content';
+    
+    const icon = document.createElement('i');
+    icon.className = `fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}`;
+    
+    const messageSpan = document.createElement('span');
+    // Use textContent instead of innerHTML to prevent XSS
+    messageSpan.textContent = message;
+    
+    contentDiv.appendChild(icon);
+    contentDiv.appendChild(messageSpan);
+    notification.appendChild(contentDiv);
     
     // Add styles dynamically
     notification.style.cssText = `
@@ -328,7 +382,3 @@ function initTypingEffect() {
     }, 50);
 }
 
-// Uncomment to enable typing effect
-// initTypingEffect();
-
-console.log('Portfolio website loaded successfully!');
